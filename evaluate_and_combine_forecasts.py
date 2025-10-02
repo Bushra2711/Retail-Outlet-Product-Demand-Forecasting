@@ -4,6 +4,7 @@ from sklearn.metrics import mean_squared_error, mean_absolute_error, mean_absolu
 from prophet import Prophet
 from statsmodels.tsa.arima.model import ARIMA
 import warnings
+import os
 warnings.filterwarnings('ignore')
 
 
@@ -140,7 +141,33 @@ if 'Date' in merged_df.columns:
     merged_df['Date'] = pd.to_datetime(merged_df['Date']).dt.strftime('%Y-%m-%d')
 
 # Save final CSV
-merged_df.to_csv('final_predictions.csv', index=False)
-print("Final predictions saved to final_predictions.csv")
 print(f"Total rows: {len(merged_df)}")
 print("Columns:", merged_df.columns.tolist())
+
+# Create output directory for final prediction parts
+final_pred_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'final_predictions_parts')
+if not os.path.exists(final_pred_dir):
+    os.makedirs(final_pred_dir)
+print(f"\nSaving split files in: {final_pred_dir}")
+
+# --- Split merged_df into 3 parts for GitHub upload ---
+print("\nSplitting final predictions into 3 parts for GitHub size limits...")
+lines = merged_df.to_csv(index=False).split('\n')
+header = lines[0]
+data_lines = lines[1:]
+total_lines = len(data_lines)
+chunk_size = (total_lines // 3) + 1
+
+for i in range(3):
+    start = i * chunk_size
+    end = min((i + 1) * chunk_size, total_lines)
+    chunk = data_lines[start:end]
+    part_filename = os.path.join(final_pred_dir, f'final_predictions_part{i+1}.csv')
+    with open(part_filename, 'w', encoding='utf-8') as f:
+        f.write(header + '\n')
+        f.write('\n'.join(chunk))
+    print(f"Created {part_filename} with {len(chunk)} rows.")
+
+
+
+
