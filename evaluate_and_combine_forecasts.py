@@ -5,6 +5,7 @@ from prophet import Prophet
 from statsmodels.tsa.arima.model import ARIMA
 import warnings
 import os
+import math
 warnings.filterwarnings('ignore')
 
 
@@ -150,23 +151,36 @@ if not os.path.exists(final_pred_dir):
     os.makedirs(final_pred_dir)
 print(f"\nSaving split files in: {final_pred_dir}")
 
-# --- Split merged_df into 3 parts for GitHub upload ---
-print("\nSplitting final predictions into 3 parts for GitHub size limits...")
-lines = merged_df.to_csv(index=False).split('\n')
+# --- Split merged_df into parts of ~50 MB for GitHub upload ---
+print("\nSplitting final predictions into parts of ~50 MB for GitHub size limits...")
+
+# Convert DataFrame to CSV lines
+csv_string = merged_df.to_csv(index=False)
+lines = csv_string.split('\n')
 header = lines[0]
 data_lines = lines[1:]
-total_lines = len(data_lines)
-chunk_size = (total_lines // 3) + 1
 
-for i in range(3):
-    start = i * chunk_size
-    end = min((i + 1) * chunk_size, total_lines)
+# Estimate number of lines per 50 MB part
+# Calculate average line size in bytes
+sample_size = min(1000, len(data_lines))
+sample_bytes = sum(len(line.encode('utf-8')) for line in data_lines[:sample_size])
+avg_line_size = sample_bytes / sample_size if sample_size else 0
+lines_per_part = int((50 * 1024 * 1024) / avg_line_size) if avg_line_size else len(data_lines)
+
+total_lines = len(data_lines)
+num_parts = math.ceil(total_lines / lines_per_part)
+
+for i in range(num_parts):
+    start = i * lines_per_part
+    end = min((i + 1) * lines_per_part, total_lines)
     chunk = data_lines[start:end]
     part_filename = os.path.join(final_pred_dir, f'final_predictions_part{i+1}.csv')
     with open(part_filename, 'w', encoding='utf-8') as f:
         f.write(header + '\n')
         f.write('\n'.join(chunk))
-    print(f"Created {part_filename} with {len(chunk)} rows.")
+    print(f"Created {part_filename} with {len(chunk)} rows (approx. 50 MB).")
+
+print("✅ Split complete. Each part is approximately 50 MB for GitHub upload.")
 
 
 

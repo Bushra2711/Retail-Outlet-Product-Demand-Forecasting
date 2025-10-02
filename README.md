@@ -68,6 +68,10 @@ Run the Python scripts in the following order:
     - `final_predictions_part1.csv`
     - `final_predictions_part2.csv`
     - `final_predictions_part3.csv`
+    - `final_predictions_part4.csv`
+    - `final_predictions_part5.csv`
+    - `final_predictions_part6.csv`
+    - `final_predictions_part7.csv`
 
 ## Models Used
 
@@ -88,13 +92,12 @@ Plots include time series data, prediction intervals, and clear representations 
 - **CSV Files**:
   - `product_outlet_arima_forecasts.csv`: ARIMA forecasts for each product-outlet pair.
   - `product_outlet_prophet_forecasts.csv`: Prophet forecasts for each product-outlet pair.
-  - `final_predictions.csv`: Combined final predictions.
-    - `final_predictions_parts/final_predictions_part1.csv`: First part of combined predictions.
+  - `final_predictions_parts/final_predictions_part1.csv`: First part of combined predictions.
   - `final_predictions_parts/final_predictions_part2.csv`: Second part of combined predictions.
   - `final_predictions_parts/final_predictions_part3.csv`: Third part of combined predictions.
-
-> **Note:** The final predictions are split into three files due to GitHub file size limits.
   - `forecast_metrics_comparison.csv`: Performance metrics comparison between models.
+
+> **Note:** The final predictions are split into seven files due to GitHub file size limits (approximately 50 MB each).
 
 - **Visualization Plots**:
   - ARIMA plots in `arima_plots/` directory.
