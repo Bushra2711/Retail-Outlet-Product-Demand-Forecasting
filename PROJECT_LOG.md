@@ -1,4 +1,4 @@
-# Retail Product Demand Forecasting System
+# Forecasting System - Project Demand of Products at a Retail Outlet Based on Historical Data
 
 ## Project Objective and Brief
 
@@ -31,8 +31,6 @@ The primary objective of this project is to develop a comprehensive forecasting 
 3. **Visualization System**
    - Individual ARIMA forecast plots
    - Individual Prophet forecast plots
-   - Combined comparison plots
-   - Clear representation of predictions with confidence intervals
 
 4. **Output Generation**
    - CSV files containing forecasts
@@ -48,6 +46,7 @@ The system successfully:
   - ARIMA-specific forecasts (in `arima_plots/`)
   - Prophet-specific forecasts (in `prophet_plots/`)
 - Evaluates model performance and combines forecasts into final predictions
+- Splits final combined predictions into multiple CSV parts (~50 MB each) for GitHub upload limits
 
 ### Technical Details:
 
@@ -64,6 +63,11 @@ The system successfully:
    - Prediction intervals
    - Trend analysis
    - Model comparison charts
+
+4. **Evaluation and Combination**
+   - Uses RMSE, MAE, and MAPE metrics to evaluate ARIMA and Prophet forecasts
+   - Combines forecasts into a merged dataset for final predictions
+   - Splits final predictions into parts for easier handling and upload
 
 ### Benefits:
 1. Better inventory management
