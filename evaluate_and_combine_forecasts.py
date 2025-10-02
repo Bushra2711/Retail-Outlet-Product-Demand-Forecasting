@@ -151,8 +151,8 @@ if not os.path.exists(final_pred_dir):
     os.makedirs(final_pred_dir)
 print(f"\nSaving split files in: {final_pred_dir}")
 
-# --- Split merged_df into parts of ~50 MB for GitHub upload ---
-print("\nSplitting final predictions into parts of ~50 MB for GitHub size limits...")
+# --- Split merged_df into parts of ~20 MB for GitHub upload ---
+print("\nSplitting final predictions into parts of ~20 MB for GitHub size limits...")
 
 # Convert DataFrame to CSV lines
 csv_string = merged_df.to_csv(index=False)
@@ -160,12 +160,11 @@ lines = csv_string.split('\n')
 header = lines[0]
 data_lines = lines[1:]
 
-# Estimate number of lines per 50 MB part
 # Calculate average line size in bytes
 sample_size = min(1000, len(data_lines))
 sample_bytes = sum(len(line.encode('utf-8')) for line in data_lines[:sample_size])
 avg_line_size = sample_bytes / sample_size if sample_size else 0
-lines_per_part = int((50 * 1024 * 1024) / avg_line_size) if avg_line_size else len(data_lines)
+lines_per_part = int((20 * 1024 * 1024) / avg_line_size) if avg_line_size else len(data_lines)
 
 total_lines = len(data_lines)
 num_parts = math.ceil(total_lines / lines_per_part)
@@ -178,9 +177,9 @@ for i in range(num_parts):
     with open(part_filename, 'w', encoding='utf-8') as f:
         f.write(header + '\n')
         f.write('\n'.join(chunk))
-    print(f"Created {part_filename} with {len(chunk)} rows (approx. 50 MB).")
+print(f"Created {part_filename} with {len(chunk)} rows (approx. 20 MB).")
 
-print("✅ Split complete. Each part is approximately 50 MB for GitHub upload.")
+print("✅ Split complete. Each part is approximately 20 MB for GitHub upload.")
 
 
 
