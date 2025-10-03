@@ -46,6 +46,7 @@ The system successfully:
   - ARIMA-specific forecasts (in `arima_plots/`)
   - Prophet-specific forecasts (in `prophet_plots/`)
 - Evaluates model performance and combines forecasts into final predictions
+
 - Splits final combined predictions into multiple CSV parts (~20 MB each) for GitHub upload limits
 
 ### Technical Details:

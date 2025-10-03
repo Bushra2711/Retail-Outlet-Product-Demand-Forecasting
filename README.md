@@ -62,23 +62,25 @@ Run the Python scripts in the following order:
 - `product_outlet_prophet_forecasts.csv`: Prophet forecast results.
 - `forecast_metrics_comparison.csv`: Comparison of forecast metrics.
 - `PROJECT_LOG.md`: Project log and documentation.
--- final_predictions_parts/: Folder containing split final prediction files.
-- **`final_predictions_part1.csv`**: First part of the combined prediction output.
-- **`final_predictions_part2.csv`**: Second part of the combined prediction output.
-- **`final_predictions_part3.csv`**
-- **`final_predictions_part4.csv`**
-- **`final_predictions_part5.csv`**
-- **`final_predictions_part6.csv`**
-- **`final_predictions_part7.csv`**
-- **`final_predictions_part8.csv`**
-- **`final_predictions_part9.csv`**
-- **`final_predictions_part10.csv`**
-- **`final_predictions_part11.csv`**
-- **`final_predictions_part12.csv`**
-- **`final_predictions_part13.csv`**
-- **`final_predictions_part14.csv`**
-- **`final_predictions_part15.csv`**
-- **`final_predictions_part16.csv`**
+- `final_predictions_parts/`: Folder containing split final prediction files.
+    - `final_predictions_part1.csv`
+    - `final_predictions_part2.csv`
+    - `final_predictions_part3.csv`
+    - `final_predictions_part4.csv`
+    - `final_predictions_part5.csv`
+    - `final_predictions_part6.csv`
+    - `final_predictions_part7.csv` 
+    - `final_predictions_part8.csv`
+    - `final_predictions_part9.csv`
+    - `final_predictions_part10.csv`
+    - `final_predictions_part11.csv` 
+    - `final_predictions_part12.csv`
+    - `final_predictions_part13.csv`
+    - `final_predictions_part14.csv`
+    - `final_predictions_part15.csv`
+    - `final_predictions_part16.csv`  
+
+
 
 ## Models Used
 
@@ -98,12 +100,15 @@ Plots include time series data, prediction intervals, and clear representations 
 - **CSV Files**:
   - `product_outlet_arima_forecasts.csv`: ARIMA forecasts for each product-outlet pair.
   - `product_outlet_prophet_forecasts.csv`: Prophet forecasts for each product-outlet pair.
+
   - **`final_predictions_part1.csv`**: First part of combined predictions.
   - **`final_predictions_part2.csv`**: Second part of combined predictions.
   - **`final_predictions_part3.csv`**: Third part of combined predictions.
   - `forecast_metrics_comparison.csv`: Performance metrics comparison between models.
 
 > **Note:** The final predictions are split into **16 files** (approximately **20 MB** each) and saved directly to the root directory due to GitHub file size limits.
+
+
 
 - **Visualization Plots**:
   - ARIMA plots in `arima_plots/` directory.
@@ -132,6 +137,13 @@ This project was developed as part of the TCS iON RIO internship program. The co
 
 ## Contact
 
+
 For any queries regarding this project, please contact: 
 - Project Maintainer: Bushra Abdul 
 - Email: bushra14@amityonline.com
+
+Contact
+For any queries regarding this project, please contact:  
+- Project Maintainer: Bushra Abdul  
+- Email (bushra14@amityonline.com)
+
