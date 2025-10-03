@@ -1,9 +1,8 @@
 # Forecasting System - Project Demand of Products at a Retail Outlet Based on Historical Data
 
-
 ## Description
 
-The primary objective of this project is to develop a comprehensive forecasting system that predicts product demand across retail outlets using historical sales data. The system employs advanced time series analysis techniques, specifically ARIMA (AutoRegressive Integrated Moving Average) and Prophet models, to generate accurate demand forecasts.
+The primary objective of this project is to develop a comprehensive forecasting system that predicts product demand across retail outlets using historical sales data. The system employs advanced time series analysis techniques, specifically **ARIMA** (AutoRegressive Integrated Moving Average) and **Prophet** models, to generate accurate demand forecasts.
 
 This system provides a robust foundation for retail demand forecasting, enabling better inventory management and business planning through data-driven predictions.
 
@@ -30,7 +29,7 @@ This system provides a robust foundation for retail demand forecasting, enabling
 - seaborn
 
 Install the required packages using pip:
-```
+```sh
 pip install pandas numpy statsmodels prophet matplotlib seaborn
 ```
 
@@ -42,8 +41,8 @@ Run the Python scripts in the following order:
 2. **Exploratory Data Analysis**: `python exploratory_data_analysis.py` - Performs exploratory data analysis on the cleaned data.
 3. **Generate Forecasts**: `python generate_forecasts.py` - Generates forecasts using both ARIMA and Prophet models for all product-outlet pairs.
 4. **Plot Forecasts**:
-   - `python plot_arima_forecast.py` - Creates ARIMA forecast plots.
-   - `python plot_prophet_forecast.py` - Creates Prophet forecast plots.
+    - `python plot_arima_forecast.py` - Creates ARIMA forecast plots.
+    - `python plot_prophet_forecast.py` - Creates Prophet forecast plots.
 5. **Evaluate and Combine**: `python evaluate_and_combine_forecasts.py` - Evaluates model performance and combines forecasts.
 
 ## Project Structure
@@ -61,27 +60,24 @@ Run the Python scripts in the following order:
 - `Retail_dataset_200k.csv`: Raw retail sales dataset.
 - `product_outlet_arima_forecasts.csv`: ARIMA forecast results.
 - `product_outlet_prophet_forecasts.csv`: Prophet forecast results.
-- `final_predictions.csv`: Final combined predictions.
 - `forecast_metrics_comparison.csv`: Comparison of forecast metrics.
 - `PROJECT_LOG.md`: Project log and documentation.
-- `final_predictions_parts/`: Folder containing split final prediction files.
-    - `final_predictions_part1.csv`
-    - `final_predictions_part2.csv`
-    - `final_predictions_part3.csv`
-    - `final_predictions_part4.csv`
-    - `final_predictions_part5.csv`
-    - `final_predictions_part6.csv`
-    - `final_predictions_part7.csv` 
-    - `final_predictions_part8.csv`
-    - `final_predictions_part9.csv`
-    - `final_predictions_part10.csv`
-    - `final_predictions_part11.csv` 
-    - `final_predictions_part12.csv`
-    - `final_predictions_part13.csv`
-    - `final_predictions_part14.csv`
-    - `final_predictions_part15.csv`
-    - `final_predictions_part16.csv`  
-
+- **`final_predictions_part1.csv`**: First part of the combined prediction output.
+- **`final_predictions_part2.csv`**: Second part of the combined prediction output.
+- **`final_predictions_part3.csv`**
+- **`final_predictions_part4.csv`**
+- **`final_predictions_part5.csv`**
+- **`final_predictions_part6.csv`**
+- **`final_predictions_part7.csv`**
+- **`final_predictions_part8.csv`**
+- **`final_predictions_part9.csv`**
+- **`final_predictions_part10.csv`**
+- **`final_predictions_part11.csv`**
+- **`final_predictions_part12.csv`**
+- **`final_predictions_part13.csv`**
+- **`final_predictions_part14.csv`**
+- **`final_predictions_part15.csv`**
+- **`final_predictions_part16.csv`**
 
 ## Models Used
 
@@ -94,7 +90,6 @@ The system generates three types of visualizations:
 - Individual ARIMA forecast plots (stored in `arima_plots/`)
 - Individual Prophet forecast plots (stored in `prophet_plots/`)
 
-
 Plots include time series data, prediction intervals, and clear representations of forecasts.
 
 ## Output
@@ -102,12 +97,12 @@ Plots include time series data, prediction intervals, and clear representations 
 - **CSV Files**:
   - `product_outlet_arima_forecasts.csv`: ARIMA forecasts for each product-outlet pair.
   - `product_outlet_prophet_forecasts.csv`: Prophet forecasts for each product-outlet pair.
-  - `final_predictions_parts/final_predictions_part1.csv`: First part of combined predictions.
-  - `final_predictions_parts/final_predictions_part2.csv`: Second part of combined predictions.
-  - `final_predictions_parts/final_predictions_part3.csv`: Third part of combined predictions.
+  - **`final_predictions_part1.csv`**: First part of combined predictions.
+  - **`final_predictions_part2.csv`**: Second part of combined predictions.
+  - **`final_predictions_part3.csv`**: Third part of combined predictions.
   - `forecast_metrics_comparison.csv`: Performance metrics comparison between models.
 
-> **Note:** The final predictions are split into seven files due to GitHub file size limits (approximately 50 MB each).
+> **Note:** The final predictions are split into **16 files** (approximately **20 MB** each) and saved directly to the root directory due to GitHub file size limits.
 
 - **Visualization Plots**:
   - ARIMA plots in `arima_plots/` directory.
@@ -134,10 +129,8 @@ Plots include time series data, prediction intervals, and clear representations 
 
 This project was developed as part of the TCS iON RIO internship program. The code is available for educational and research purposes.
 
-
 ## Contact
 
-Contact
-For any queries regarding this project, please contact:  
-- Project Maintainer: Bushra Abdul  
-- Email (bushra14@amityonline.com)
+For any queries regarding this project, please contact: 
+- Project Maintainer: Bushra Abdul 
+- Email: bushra14@amityonline.com
