@@ -167,13 +167,18 @@ else:
     num_parts = math.ceil(total_lines / lines_per_part)
     
     # Perform splitting and save directly to current directory
+    final_pred_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'final_predictions_parts')
+    if not os.path.exists(final_pred_dir):
+        os.makedirs(final_pred_dir)
+    print(f"\nSaving split files in: {final_pred_dir}")
+    
     for i in range(num_parts):
         start = i * lines_per_part
         end = min((i + 1) * lines_per_part, total_lines)
         chunk = data_lines[start:end]
         
         # Save directly to the current working directory
-        part_filename = f'final_predictions_part{i+1}.csv'
+        part_filename = os.path.join(final_pred_dir, f'final_predictions_part{i+1}.csv')
         
         with open(part_filename, 'w', encoding='utf-8') as f:
             f.write(header + '\n')

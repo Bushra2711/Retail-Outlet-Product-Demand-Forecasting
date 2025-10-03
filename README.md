@@ -62,6 +62,7 @@ Run the Python scripts in the following order:
 - `product_outlet_prophet_forecasts.csv`: Prophet forecast results.
 - `forecast_metrics_comparison.csv`: Comparison of forecast metrics.
 - `PROJECT_LOG.md`: Project log and documentation.
+-- final_predictions_parts/: Folder containing split final prediction files.
 - **`final_predictions_part1.csv`**: First part of the combined prediction output.
 - **`final_predictions_part2.csv`**: Second part of the combined prediction output.
 - **`final_predictions_part3.csv`**
