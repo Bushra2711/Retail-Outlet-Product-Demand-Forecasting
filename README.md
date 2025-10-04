@@ -142,8 +142,4 @@ For any queries regarding this project, please contact:
 - Project Maintainer: Bushra Abdul 
 - Email: bushra14@amityonline.com
 
-Contact
-For any queries regarding this project, please contact:  
-- Project Maintainer: Bushra Abdul  
-- Email (bushra14@amityonline.com)
 

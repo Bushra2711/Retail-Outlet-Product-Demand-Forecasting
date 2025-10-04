@@ -146,9 +146,6 @@ print("Columns:", merged_df.columns.tolist())
 
 print("\n**Splitting final predictions into parts of ~20 MB and saving to current directory for GitHub upload...**")
 
-# Save final CSV
-print(f"Total rows: {len(merged_df)}")
-print("Columns:", merged_df.columns.tolist())
 
 # Create output directory for final prediction parts
 final_pred_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'final_predictions_parts')
@@ -156,8 +153,6 @@ if not os.path.exists(final_pred_dir):
     os.makedirs(final_pred_dir)
 print(f"\nSaving split files in: {final_pred_dir}")
 
-# --- Split merged_df into parts of ~20 MB for GitHub upload ---
-print("\nSplitting final predictions into parts of ~20 MB for GitHub size limits...")
 
 
 # Convert DataFrame to CSV lines
@@ -182,12 +177,6 @@ else:
     total_lines = len(data_lines)
     num_parts = math.ceil(total_lines / lines_per_part)
     
-    # Perform splitting and save directly to current directory
-    final_pred_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'final_predictions_parts')
-    if not os.path.exists(final_pred_dir):
-        os.makedirs(final_pred_dir)
-    print(f"\nSaving split files in: {final_pred_dir}")
-    
     for i in range(num_parts):
         start = i * lines_per_part
         end = min((i + 1) * lines_per_part, total_lines)
@@ -203,28 +192,11 @@ else:
         # Print confirmation for the file being saved
         print(f"  -> Saved: {part_filename} (Approx. {len(chunk)} rows)")
 
+# Final confirmation print is correctly outside the loop
     print("\n✅ **Split complete.** All parts are saved directly in the current directory and are sized appropriately for GitHub.")
 
-# Calculate average line size in bytes
-sample_size = min(1000, len(data_lines))
-sample_bytes = sum(len(line.encode('utf-8')) for line in data_lines[:sample_size])
-avg_line_size = sample_bytes / sample_size if sample_size else 0
-lines_per_part = int((20 * 1024 * 1024) / avg_line_size) if avg_line_size else len(data_lines)
+    print("\n✅ **Split complete.** All parts are saved to the 'final_predictions_parts' folder and are sized appropriately for GitHub.")
 
-total_lines = len(data_lines)
-num_parts = math.ceil(total_lines / lines_per_part)
-
-for i in range(num_parts):
-    start = i * lines_per_part
-    end = min((i + 1) * lines_per_part, total_lines)
-    chunk = data_lines[start:end]
-    part_filename = os.path.join(final_pred_dir, f'final_predictions_part{i+1}.csv')
-    with open(part_filename, 'w', encoding='utf-8') as f:
-        f.write(header + '\n')
-        f.write('\n'.join(chunk))
-print(f"Created {part_filename} with {len(chunk)} rows (approx. 20 MB).")
-
-print("✅ Split complete. Each part is approximately 20 MB for GitHub upload.")
 
 
 
